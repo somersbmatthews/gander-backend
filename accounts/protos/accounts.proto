@@ -9,12 +9,23 @@ message Request {
    string password = 2;
 }
 
-message Response {
+message AuthenticationResponse {
    bool authenticated = 1;
    google.rpc.Status error_response = 99;
 }
 
-service Accounts {
-   rpc AuthenticateUser(Request) returns (Response);
+message RegistrationResponse {
 
+}
+
+message ChangePasswordResponse {
+
+}
+
+
+
+service Accounts {
+   rpc AuthenticateUser(Request) returns (AuthenticationResponse);
+   rpc RegisterUser(Request) returns (RegistrationResponse);
+   rpc ChangePassword(Request) returns (ChangePasswordResponse); 
 }
