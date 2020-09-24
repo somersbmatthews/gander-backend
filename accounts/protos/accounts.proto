@@ -15,14 +15,14 @@ message AuthenticationResponse {
 }
 
 message RegistrationResponse {
-
+   bool registered = 1;
+   google.rpc.Status error_response = 99;
 }
 
 message ChangePasswordResponse {
-
+   bool changed = 1;
+   google.rpc.Status error_response = 99;
 }
-
-
 
 service Accounts {
    rpc AuthenticateUser(Request) returns (AuthenticationResponse);
