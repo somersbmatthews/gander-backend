@@ -9,12 +9,36 @@ message Request {
    string password = 2;
 }
 
-message Response {
-   bool authenticated = 1;
+message LogoutRequest {
+   string username = 1;
+   string token = 2;
+}
+
+message LoginResponse {
+   bool loggedin = 1;
+   string token = 2;
    google.rpc.Status error_response = 99;
 }
 
-service Accounts {
-   rpc AuthenticateUser(Request) returns (Response);
+message RegistrationResponse {
+   bool registered = 1;
+   string token = 2;
+   google.rpc.Status error_response = 99;
+}
 
+message ChangePasswordResponse {
+   bool changed = 1;
+   string token = 2;
+   google.rpc.Status error_response = 99;
+}
+
+message LogoutResponse {
+   bool loggedout = 1;
+}
+
+service Accounts {
+   rpc LoginUser(Request) returns (LoginResponse);
+   rpc RegisterUser(Request) returns (RegistrationResponse);
+   rpc ChangePassword(Request) returns (ChangePasswordResponse); 
+   rpc LogoutUser(LogoutRequest) returns (LogoutResponse);
 }
