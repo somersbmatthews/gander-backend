@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package accounts;
 
-import "google/rpc/status.proto";
+import "third_party/google/rpc/status.proto";
 
 message Request {
    string username = 1;
