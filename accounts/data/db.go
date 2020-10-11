@@ -14,5 +14,9 @@ func init() {
 		Database: "gander_accounts",
 	})
 
-	fmt.Println(db)
+	ctx := context.Background()
+
+	if err := db.Ping(ctx); err != nil {
+   		panic(err)
+	}
 }
